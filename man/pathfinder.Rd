@@ -147,4 +147,4 @@ yfactor <- c(y_Y1,y_Y2,y_Y3)
 
 pathfinder(fit_1,xfactor = xfactor,yfactor = yfactor)
 # = pathfinder(fit_1,xfactor,yfactor)
-
+}
