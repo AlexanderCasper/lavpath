@@ -26,7 +26,7 @@ We use lavaan to calculate relevant parameters:
 To visualize this model with lavpath, you just need the fitted model and coordinates for Fear, Distance and Action. 
 Coordinates define where the variable will be printed in a 10x10-XY-coordinate system.
 
-   library(lavpath)
+    library(lavpath)
 
 With the nameorder() function you get the order of the coordinates.
 
