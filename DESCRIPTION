@@ -2,7 +2,7 @@ Package: lavpath
 Type: Package
 Title: lavpath helps to find the right path.
 Version: 1.0
-Imports: lavaan, dplyr, crayon, magrittr
+Imports: lavaan, dplyr, crayon, magrittr, stringr
 Author: Alexander Casper
 Maintainer: Alexander Casper <casper.alexander@web.de>
 Description: This Package is an add-on for lavaan. It's for visualizing pathmodels.
