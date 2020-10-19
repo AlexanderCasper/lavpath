@@ -28,17 +28,26 @@ Coordinates define where the variable will be printed in a 10x10-XY-coordinate s
 
     library(lavpath)
 
-With the nameorder() function you get the order of the coordinates.
-
-    nameorder(fit_1)
-    
-    Output: [1] Action [2] Distance [3] Fear
-
-In the pathfinder() function you add the fitted model, a vector with the x-coordinates and a vector with the y-coordinates (pay attention to the right order). 
+In the pathfinder1() function you add the fitted model, and an object with the x/y-coordinates. 
 The plot has the size 10x10. "Action" should be more right [x=9/y=5], "Distance" should be more left [x=1/y=5]. "Fear" somewhere in the middle but a little bit higher please[x=5/y=7].
 
+    object <- " Action <- 9/5
+                Distance <- 1/5
+                Fear <- 5/7
+    pathfinder1(fit_1, object)
 
-    pathfinder(fit_1, c(9,1,5), c(5,5,7))
+
+In the pathfinder2() function you only add the fitted model. The function is semi interactive. 
+
+    pathfinder2(fit_1)
+
+
+In the pathfinder3() function you only add the fitted model. The function is full interactive. 
+
+    pathfinder3(fit_1)
+
+
+I recomend pathfinder3().
 
 That's it. A good size to print the plot is 1000x1000.
 
