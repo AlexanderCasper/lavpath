@@ -47,7 +47,7 @@ In the pathfinder3() function you only add the fitted model. The function is ful
     pathfinder3(fit_1)
 
 
-I recomend pathfinder3().
+I recommend pathfinder3().
 
 That's it. A good size to print the plot is 1000x1000.
 
