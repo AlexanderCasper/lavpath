@@ -1,9 +1,46 @@
-pathfinder <- function(model, xfactor, yfactor,
-                       estplace = 0, distance = 0.2, aheadlength = 0.2, aheadangle = 20,
-                       box1="black",  box2="lightgrey", textcol = "black", acol = "black", estcol ="black",
-                       alength = 0.6, lwd=2,  cex=15, cex2=1, family="", font=2,
-                       font2 =1, font3 = 1, pch=22)
+pathfinder3 <- function(model,
+                        estplace = 0, distance = 0.2, aheadlength = 0.2, aheadangle = 20,
+                        box1="black",  box2="lightgrey", textcol = "black", acol = "black", estcol ="black",
+                        alength = 0.6, lwd=2,  cex=15, cex2=1, family="", font=2,
+                        font2 =1, font3 = 1, pch=22)
 {
+
+
+  dev.new(width=10, height=10, unit="npc")
+  ordinates <- data.frame(matrix(ncol = length(nameorder(mod.1.fit)), nrow = 0))
+  colnames(ordinates) <- nameorder(mod.1.fit)
+
+
+  for (i in 1:length(nameorder(mod.1.fit))) {
+
+    d <- paste( "X/Y Coordinates for:",nameorder(mod.1.fit)[i])
+    e <- paste( "X/Y Coordinates for: ->",nameorder(mod.1.fit)[i]," <-\n\n You can click on any place in the whole window to get the coordinates.")
+
+    dev.new(width=10, height=10, unit="npc")
+
+    plot(1,1, type="n",cex=10,pch=19,xlim= c(0,10), ylim = c(0,10),xaxt='n',yaxt='n',
+         ylab="",xlab = "")
+    points(x= 5, y=5)
+    text(x= 5, y=5, label= e)
+
+    c <- grid::grid.locator(unit="npc")
+    dev.off()
+    ordinates[1,i] <- svDialogs::dlgInput(d , paste(round(as.numeric(c$x)*10),"/",round(as.numeric(c$y)*10))   )$res
+
+
+
+  }
+  ordinates
+  o <- stringr::str_split(ordinates[1,], "/", simplify = T)
+
+  o[,1] <- stringr::str_squish(o[,1])
+  o[,2] <- stringr::str_squish(o[,2])
+
+  xfactor <- as.numeric(o[,1])
+  yfactor <- as.numeric(o[,2])
+
+
+  ####
 
   neu <-  dplyr::select(dplyr::filter(lavaan::parameterEstimates(model, standardized=TRUE),op == "~"),'Latent Factor'=lhs, Indicator=rhs, B=est, SE=se, Z=z, pvalue=pvalue, Beta=std.all)
   ## parameter runden
@@ -86,6 +123,7 @@ pathfinder <- function(model, xfactor, yfactor,
 
   # 2. Visualisierung ####
   ############################################### 2.1 Leerer Plot
+
   plot(1,1, type="n",cex=10,pch=19,xlim= c(0,10), ylim = c(0,10),xaxt='n',yaxt='n',
        ylab="",xlab = "")
 

@@ -1,35 +1,29 @@
-pathfinder2 <- function(model,
-                        estplace = 0, distance = 0.2, aheadlength = 0.2, aheadangle = 20,
-                        box1="black",  box2="lightgrey", textcol = "black", acol = "black", estcol ="black",
-                        alength = 0.6, lwd=2,  cex=15, cex2=1, family="", font=2,
-                        font2 =1, font3 = 1, pch=22)
+pathfinder1 <- function(model, ordinates ,
+                       estplace = 0, distance = 0.2, aheadlength = 0.2, aheadangle = 20,
+                       box1="black",  box2="lightgrey", textcol = "black", acol = "black", estcol ="black",
+                       alength = 0.6, lwd=2,  cex=15, cex2=1, family="", font=2,
+                       font2 =1, font3 = 1, pch=22)
 {
 
+  o <- stringr::str_split(ordinates, "\n", simplify = T)
 
+  o <- stringr::str_squish(o)
 
-  ordinates <- data.frame(matrix(ncol = length(nameorder(mod.1.fit)), nrow = 0))
-  colnames(ordinates) <- nameorder(mod.1.fit)
+  o <- o[which(stringr::str_length(o) > 0)]
 
+  o <- stringr::str_split(o, "<-", simplify = T)
 
-  for (i in 1:length(nameorder(mod.1.fit))) {
+  o2 <- stringr::str_split(o[,2], "/", simplify = T)
 
-    c <- paste( "X/Y Coordinates for:",nameorder(mod.1.fit)[i])
-
-
-    ordinates[1,i] <- svDialogs::dlgInput(c)$res
-
-
-
-  }
-  ordinates
-  o <- stringr::str_split(ordinates[1,], "/", simplify = T)
-
-  o[,1] <- stringr::str_squish(o[,1])
+  o <- cbind(o[,1],o2)
+  o <- o[order(o[,1]),]
+  o
   o[,2] <- stringr::str_squish(o[,2])
+  o[,3] <- stringr::str_squish(o[,3])
 
-  xfactor <- as.numeric(o[,1])
-  yfactor <- as.numeric(o[,2])
 
+  xfactor <- o[,2]
+  yfactor <- o[,3]
 
   ####
 

@@ -1,13 +1,13 @@
-\name{pathfinder2}
-\alias{pathfinder2}
+\name{pathfinder3}
+\alias{pathfinder3}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{pathfinder2()}
+\title{pathfinder3()}
 \description{
 Visualize the pathmodel of your lavaan-objekt.
 
 The minimum input is your fitted model.
 
-This function is semi interactive. You have to define the coordinates of the variables in a pop-up textbox.
+This function is full interactive. You have to define the coordinates of the variables with clicks in the pop-up window.
 
 The plotsize is 10*10, so your coordinates should be between 0 and 11.
 
@@ -127,7 +127,7 @@ fit_1 <- sem(model, data=data)
 library(lavpath)
 
 
-pathfinder2(fit_1)
+pathfinder3(fit_1)
 
 
 }

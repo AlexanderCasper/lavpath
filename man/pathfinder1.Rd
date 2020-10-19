@@ -1,21 +1,17 @@
-\name{pathfinder}
-\alias{pathfinder}
+\name{pathfinder1}
+\alias{pathfinder1}
 %- Also NEED an '\alias' for EACH other topic documented here.
-\title{pathfinder()}
+\title{pathfinder1()}
 \description{
 Visualize the pathmodel of your lavaan-objekt.
-The minimum input is your fitted model and two vectors, which contain the wished x/y coordinates of the variables.
-The first value of the vector which is used for 'xfactor' is the x-value of your first variable.
-Same for the vector for 'yfactor'.
-The plotsize is 10*10, so your coordinates should be between 0 and 11.
-The two vectors must have the same number of values as there are variables.
-In other words, every variable needs an x and an y value.
 
-The order of coordinates has to be the alphabetic order of your variables.
-You can easy find out the order by useing the 'nameorder()' function
+The minimum input is your fitted model and an "ordinates" object, which defines the wished x/y coordinates of the variables. You'll understand when you check out the examples.
+
+The plotsize is 10*10, so your coordinates should be between 0 and 11.
+
 }
 \usage{
-pathfinder( model, xfactor, yfactor,
+pathfinder( model, ordinates,
             estplace = 0, distance = 0.2, aheadlength = 0.2, aheadangle = 20,
             box1 = "black",  box2 = "lightgrey", textcol = "black", acol = "black",
             estcol ="black", alength = 0.6, lwd = 2,  cex = 15, cex2 = 1, family = "",
@@ -28,10 +24,7 @@ pathfinder( model, xfactor, yfactor,
 
 model       = lavaan-objekt
 
-xfactor     = x coordinate in order to "nameorder(model)"
-
-yfactor     = y coordinate in order to "nameorder(model)"
-
+ordinates   = x/y coordinates
 
 
 
@@ -121,17 +114,8 @@ Alexander Casper
 }
 \examples{
 
-#### 1) Example ####
+#### Example ####
 
-nameorder(model)    # shows the right order of variables to specify coordinates
-xvector <- c(1,5,9) # x coordinates. Beginns with the first variable which you get with "nameorder"
-yvector <- c(4,8,4) # y coordinates. Same.
-pathfinder(fit_1,xfactor = xvector,yfactor = yvvector) # model is your fitted lavaan model.
-
-## The first variable is places at x(1) and y(4),...
-
-
-#### 2) Example ####
 
 library(lavaan)
 
@@ -140,11 +124,13 @@ model <- 'Y2 ~ Y1
             Y3 ~ Y1'
 fit_1 <- sem(model, data=data)
 
-nameorder(fit_1) ## Output: [1]Y1, [2]Y2, [3]Y3
+library(lavpath)
 
-xfactor <- c(x_Y1,x_Y2,x_Y3)
-yfactor <- c(y_Y1,y_Y2,y_Y3)
+ordinates <- "Y1 <- 1/5
+              Y2 <- 5/8
+              Y3 <- 9/5"
 
-pathfinder(fit_1,xfactor = xfactor,yfactor = yfactor)
-# = pathfinder(fit_1,xfactor,yfactor)
+pathfinder1(fit_1, ordinates)
+
+
 }

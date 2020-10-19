@@ -7,6 +7,6 @@ names(neu)[1] <- "Indicator"
 neu3 <- rbind(neu,neu2)
 names(neu3)[1] <- "variables"
 neu3$variables <- as.factor(neu3$variables)
-print(levels(neu3$variables))
+levels(neu3$variables)
 }
 
