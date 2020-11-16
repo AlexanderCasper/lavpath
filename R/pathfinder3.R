@@ -7,14 +7,14 @@ pathfinder3 <- function(model,
 
 
   dev.new(width=10, height=10, unit="npc")
-  ordinates <- data.frame(matrix(ncol = length(nameorder(mod.1.fit)), nrow = 0))
-  colnames(ordinates) <- nameorder(mod.1.fit)
+  ordinates <- data.frame(matrix(ncol = length(nameorder(model)), nrow = 0))
+  colnames(ordinates) <- nameorder(model)
 
 
-  for (i in 1:length(nameorder(mod.1.fit))) {
+  for (i in 1:length(nameorder(model))) {
 
-    d <- paste( "X/Y Coordinates for:",nameorder(mod.1.fit)[i])
-    e <- paste( "X/Y Coordinates for: ->",nameorder(mod.1.fit)[i]," <-\n\n You can click on any place in the whole window to get the coordinates.")
+    d <- paste( "X/Y Coordinates for:",nameorder(model)[i])
+    e <- paste( "X/Y Coordinates for: ->",nameorder(model)[i]," <-\n\n You can click on any place in the whole window to get the coordinates.")
 
     dev.new(width=10, height=10, unit="npc")
 

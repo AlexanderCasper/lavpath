@@ -7,13 +7,13 @@ pathfinder2 <- function(model,
 
 
 
-  ordinates <- data.frame(matrix(ncol = length(nameorder(mod.1.fit)), nrow = 0))
-  colnames(ordinates) <- nameorder(mod.1.fit)
+  ordinates <- data.frame(matrix(ncol = length(nameorder(model)), nrow = 0))
+  colnames(ordinates) <- nameorder(model)
 
 
-  for (i in 1:length(nameorder(mod.1.fit))) {
+  for (i in 1:length(nameorder(model))) {
 
-    c <- paste( "X/Y Coordinates for:",nameorder(mod.1.fit)[i])
+    c <- paste( "X/Y Coordinates for:",nameorder(model)[i])
 
 
     ordinates[1,i] <- svDialogs::dlgInput(c)$res

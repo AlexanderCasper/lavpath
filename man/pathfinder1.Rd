@@ -114,23 +114,23 @@ Alexander Casper
 }
 \examples{
 
-#### Example ####
-
+data("pathdata")
 
 library(lavaan)
 
-model <- 'Y2 ~ Y1
-            Y3 ~ Y2+Y1
-            Y3 ~ Y1'
-fit_1 <- sem(model, data=data)
+mod <- "Acting ~ Attention + Reputation
+Attention ~ Reputation"
 
-library(lavpath)
 
-ordinates <- "Y1 <- 1/5
-              Y2 <- 5/8
-              Y3 <- 9/5"
+mod.fit <- sem(mod, pathdata)
 
-pathfinder1(fit_1, ordinates)
+
+
+ordinates <- "Reputation <- 1/5
+              Attention <- 5/8
+              Acting <- 9/5"
+
+pathfinder1(mod.fit, ordinates)
 
 
 }
